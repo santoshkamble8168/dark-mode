@@ -1,0 +1,91 @@
+/* Light Mode */
+:root {
+	--bg-color: #f0f0f0;
+	--text-color: #333;
+}
+
+/* Dark Mode */
+.theme-dark {
+	--bg-color: #333;
+	--text-color: #f0f0f0;
+}
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.app {
+	font-family: Arial, sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	padding: 10px;
+}
+
+.navigation {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.theme-toggle {
+	position: relative;
+}
+
+.theme-toggle button {
+	width: 60px;
+	height: 30px;
+	border-radius: 15px;
+	position: relative;
+	background-color: #ddd;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.theme-toggle button::before {
+	content: "";
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #fff;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: transform 0.3s, background-color 0.3s;
+}
+
+.theme-toggle button.dark-mode::before {
+	left: 3px;
+}
+
+.theme-toggle button.light-mode::before {
+	left: calc(100% - 26px);
+}
+
+.theme-toggle button.light-mode {
+	background-color: #1919ef;
+}
+
+.theme-toggle button.dark-mode {
+	background-color: #ccc;
+}
+
+.theme-toggle button:focus::before {
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle button.dark-mode:focus::before {
+	background-color: #333;
+}
+
+.theme-toggle button.light-mode:focus::before {
+	background-color: #fff;
+}
+
+.page {
+	height: 100vh;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
