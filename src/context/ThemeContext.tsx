@@ -1,7 +1,8 @@
-import React, { ReactNode, createContext, useContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 interface ThemeContextProps {
 	isDarkTheme: boolean;
+	theme: string;
 	toggleTheme: () => void;
 }
 
@@ -16,10 +17,16 @@ export const ThemeProvider: React.FC<themeProviderProps> = ({ children }) => {
 
 	const toggleTheme = () => {
 		setIsDarkTheme((prevState) => !prevState);
-		document.body.classList.toggle("theme-dark", !isDarkTheme);
 	};
 
-	return <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
+	const theme = isDarkTheme ? "dark" : "light";
+
+	useEffect(() => {
+		document.body.classList.toggle("theme-dark", isDarkTheme);
+		document.documentElement.setAttribute("data-theme", theme);
+	}, [isDarkTheme]);
+
+	return <ThemeContext.Provider value={{ theme, isDarkTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = () => {
