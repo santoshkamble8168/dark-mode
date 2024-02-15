@@ -2,15 +2,16 @@ import React from "react";
 import { useTheme } from "../context/ThemeContext";
 
 const ThemeToggle: React.FC = () => {
-	const { isDarkTheme, toggleTheme } = useTheme();
+	const { theme, toggleTheme } = useTheme();
 
-	console.log(isDarkTheme);
+	console.log(theme);
 
 	return (
-		<div className="theme-toggle">
-			<button className={isDarkTheme ? "dark-mode" : "light-mode"} onClick={toggleTheme}>
-				<span className="sr-only"></span>
-			</button>
+		<div className="mode-switch">
+			<label>
+				<input type="checkbox" onChange={toggleTheme} checked={theme === "dark"} />
+				<span className="slider round"></span>
+			</label>
 		</div>
 	);
 };
