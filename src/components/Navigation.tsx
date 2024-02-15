@@ -3,8 +3,12 @@ import ThemeToggle from "./ThemeToggle";
 
 const Navigation: React.FC = () => {
 	return (
-		<nav className="navigation">
-			<h1>My App</h1>
+		<nav className="navbar">
+			<div>
+				<div>Home</div>
+				<div>About</div>
+				<div>Blog</div>
+			</div>
 			<ThemeToggle />
 		</nav>
 	);
